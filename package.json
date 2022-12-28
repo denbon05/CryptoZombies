@@ -14,7 +14,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "npx truffle test"
+    "test": "npx truffle test",
+    "build": "npx truffle compile"
   },
   "repository": {
     "type": "git",

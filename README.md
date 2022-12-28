@@ -6,4 +6,5 @@
 
 ```bash
 make test
+# check Makefile for more commands
 ```

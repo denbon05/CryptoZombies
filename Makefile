@@ -5,12 +5,18 @@ build:
 	npm run build
 
 fix:
-	npx eslint --fix .
+	npm run fix
 
 lint:
-	npx eslint .
+	npm run lint
 
 test:
-	npx truffle test
+	npm run test
 
-.PHONY: test
+blockchain:
+	npm run blockchain
+
+start:
+	npm run serve
+
+.PHONY: test build

@@ -1,12 +1,4 @@
 {
-  "devDependencies": {
-    "eslint": "^8.30.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.1",
-    "truffle": "^5.7.1"
-  },
   "name": "truffle-example",
   "version": "0.1.0",
   "description": "truffle practice",
@@ -14,8 +6,16 @@
     "test": "test"
   },
   "scripts": {
+    "serve-webpack": "npx webpack serve",
+    "blockchain": "npx truffle develop",
+    "serve": "npm run serve-webpack",
+    "lint": "npx eslint .",
+    "fix": "npx eslint --fix .",
     "test": "npx truffle test",
-    "build": "npx truffle compile"
+    "prebuild": "rm -fr build",
+    "compile-truffle": "npx truffle compile",
+    "build-webpack": "npx webpack",
+    "build": "npm run prebuild && npm run compile-truffle && npm run build-webpack"
   },
   "repository": {
     "type": "git",
@@ -32,5 +32,22 @@
   "bugs": {
     "url": "https://github.com/denbon05/CryptoZombies/issues"
   },
-  "homepage": "https://github.com/denbon05/CryptoZombies#readme"
+  "homepage": "https://github.com/denbon05/CryptoZombies#readme",
+  "devDependencies": {
+    "dotenv-webpack": "^8.0.1",
+    "eslint": "^8.30.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.1",
+    "truffle": "^5.7.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "jquery": "^3.6.3",
+    "web3": "^1.8.1"
+  }
 }

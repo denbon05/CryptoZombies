@@ -18,14 +18,13 @@ contract('CryptoZombies', (accounts) => {
   });
 
   it('should be able to create a new zombie', async () => {
-    // console.log('AAAA: ', contractInstance);
     const result = await contractInstance.createRandomZombie(zombieName1, {
       from: alice,
     });
     const [meta] = result.logs;
-    // console.log(result.logs);
-    assert.equal(result.receipt.status, true);
-    assert.equal(meta.args.name, zombieName1);
+
+    expect(result.receipt.status).to.equal(true);
+    expect(meta.args.name).to.equal(zombieName1);
   });
 
   it('should not allow two zombies', async () => {
@@ -51,7 +50,7 @@ contract('CryptoZombies', (accounts) => {
       });
       const newOwner = await contractInstance.ownerOf(zombieId);
 
-      assert.equal(newOwner, bob);
+      expect(newOwner).to.equal(bob);
     });
   });
 
@@ -70,8 +69,9 @@ contract('CryptoZombies', (accounts) => {
       await contractInstance.transferFrom(alice, bob, zombieId, {
         from: bob,
       });
+
       const newOwner = await contractInstance.ownerOf(zombieId);
-      assert.equal(newOwner, bob);
+      expect(newOwner).to.equal(bob);
     });
 
     it('should approve and then transfer a zombie when the owner calls transferFrom', async () => {
@@ -89,10 +89,11 @@ contract('CryptoZombies', (accounts) => {
         from: alice,
       });
       const newOwner = await contractInstance.ownerOf(zombieId);
-      assert.equal(newOwner, bob);
+      expect(newOwner).to.equal(bob);
     });
   });
 
+  // todo: figure out why it doesn't work every time - async ?
   // it('zombies should be able to attack another zombie', async () => {
   //   const {
   //     logs: [
@@ -119,6 +120,6 @@ contract('CryptoZombies', (accounts) => {
   //   await contractInstance.attack(firstZombieId, secondZombieId, {
   //     from: alice,
   //   });
-  //   assert.equal(receipt.status, true);
+  //   expect(receipt.status).to.equal(true);
   // });
 });

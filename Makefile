@@ -1,4 +1,6 @@
-ci:
+ci: lint test
+
+install:
 	npm ci
 
 build:

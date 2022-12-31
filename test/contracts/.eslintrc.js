@@ -9,5 +9,10 @@ module.exports = {
     contract: 'readonly',
     artifacts: 'readonly',
     assert: 'readonly',
+    expect: 'readonly',
+    should: 'readonly',
+  },
+  rules: {
+    '@typescript-eslint/no-var-requires': 'off',
   },
 };

@@ -1,6 +1,6 @@
 const CryptoZombies = artifacts.require('CryptoZombies');
 const utils = require('./helpers/utils');
-// const time = require('./helpers/time');
+const time = require('./helpers/time');
 
 const zombieName1 = 'Zombie 1';
 const zombieName2 = 'Zombie 2';
@@ -93,33 +93,32 @@ contract('CryptoZombies', (accounts) => {
     });
   });
 
-  // todo: figure out why it doesn't work every time - async ?
-  // it('zombies should be able to attack another zombie', async () => {
-  //   const {
-  //     logs: [
-  //       {
-  //         args: { zombieId: firstZombieId },
-  //       },
-  //     ],
-  //   } = await contractInstance.createRandomZombie(zombieName1, {
-  //     from: alice,
-  //   });
+  it('zombies should be able to attack another zombie', async () => {
+    const {
+      logs: [
+        {
+          args: { zombieId: firstZombieId },
+        },
+      ],
+    } = await contractInstance.createRandomZombie(zombieName1, {
+      from: alice,
+    });
 
-  //   const {
-  //     receipt,
-  //     logs: [
-  //       {
-  //         args: { zombieId: secondZombieId },
-  //       },
-  //     ],
-  //   } = await contractInstance.createRandomZombie(zombieName2, {
-  //     from: bob,
-  //   });
+    const {
+      receipt,
+      logs: [
+        {
+          args: { zombieId: secondZombieId },
+        },
+      ],
+    } = await contractInstance.createRandomZombie(zombieName2, {
+      from: bob,
+    });
 
-  //   await time.increase(time.duration.days(1));
-  //   await contractInstance.attack(firstZombieId, secondZombieId, {
-  //     from: alice,
-  //   });
-  //   expect(receipt.status).to.equal(true);
-  // });
+    await time.increase(time.duration.days(1));
+    await contractInstance.attack(firstZombieId, secondZombieId, {
+      from: alice,
+    });
+    expect(receipt.status).to.equal(true);
+  });
 });

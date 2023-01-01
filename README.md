@@ -7,10 +7,15 @@
 ### Run local blockchain
 
 ```bash
-make blockchain # 1st terminal
+make ganache # 1st terminal
 ```
 
-<p>After the blockchain will be launched in the 1st terminal run <b>migrate</b>.</p>
+<p>After the blockchain network will be launched run:</p>
+
+```bash
+make truffle-migrate # 2th terminal
+```
+
 <p>Copy <i>contract address</i> and set value <i>CRYPTO_ZOMBIE_CONTRACT_ADDRESS</i> env var into <i>.env</i> file.</p>
 
 ### Run dApp
@@ -24,3 +29,13 @@ make start # http://localhost:9000
 ```bash
 make test
 ```
+
+### Loom network
+
+<p>
+  Uncomment <i>truffle-config.js</i> as 
+  <a href="https://cryptozombies.io/en/lesson/11/chapter/14">
+  here
+  </a>.
+</p>
+<p>Define vars in <i>config/web3.json</i> as in <i>config/web3.example.json</i></p>

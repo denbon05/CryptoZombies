@@ -1,7 +1,7 @@
 async function shouldThrow(promise) {
   try {
     await promise;
-    assert(true);
+    expect(true);
   } catch (err) {
     return;
   }

@@ -1,3 +1,10 @@
+//? Loom: https://cryptozombies.io/en/lesson/11/chapter/14
+// const HDWalletProvider = require('truffle-hdwallet-provider');
+// const LoomTruffleProvider = require('loom-truffle-provider');
+// const web3config = require('./config/web3.json');
+
+// const mnemonic = web3config.mnemonicPhrase;
+
 /**
  * Use this file to configure your truffle project. It's seeded with some
  * common settings for different networks and features like migrations,
@@ -64,11 +71,42 @@ module.exports = {
     // tab if you use this network and you must also set the `host`, `port` and `network_id`
     // options below to some value.
     //
-    // development: {
-    //  host: "127.0.0.1",     // Localhost (default: none)
-    //  port: 8545,            // Standard Ethereum port (default: none)
-    //  network_id: "*",       // Any network (default: none)
+    development: {
+      host: '127.0.0.1', // Localhost (default: none)
+      port: 8545, // Standard Ethereum port (default: none)
+      network_id: '*', // Any network (default: none)
+      gas: 9500000,
+    },
+    // Configuration for Ethereum Mainnet
+    // mainnet: {
+    //   provider: function () {
+    //     return new HDWalletProvider(
+    //       mnemonic,
+    //       'https://mainnet.infura.io/v3/' + web3config.infuraApiKey,
+    //     );
+    //   },
+    //   network_id: '1', // Match any network id
     // },
+    // Configuration for Rinkeby Metwork
+    // rinkeby: {
+    //   provider: function() {
+    //       // Setting the provider with the Infura Rinkeby address and Token
+    //       return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/<YOUR_INFURA_API_KEY>")
+    //   },
+    //   network_id: 4
+    // },
+    // Configuration for Loom Testnet
+    // loom_testnet: {
+    //   provider: function() {
+    //       const privateKey = 'YOUR_PRIVATE_KEY';
+    //       const chainId = 'extdev-plasma-us1';
+    //       const writeUrl = 'wss://extdev-basechain-us1.dappchains.com/websocket';
+    //       const readUrl = 'wss://extdev-basechain-us1.dappchains.com/queryws';
+    //       // TODO: Replace the line below
+    //       return new LoomTruffleProvider(chainId, writeUrl, readUrl, privateKey);
+    //   },
+    //   network_id: '9545242630824'
+    // }
     //
     // An additional network, but with some advanced options…
     // advanced: {

@@ -3,7 +3,7 @@ const path = require('path');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  entry: './src/main.js',
+  entry: './src/main.ts',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build'),

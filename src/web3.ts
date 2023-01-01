@@ -6,7 +6,7 @@ import $ from 'jquery';
 import { Contract } from 'web3-eth-contract';
 import cryptoZombiesABI from './abi';
 
-export const web3 = new Web3(Web3.givenProvider || 'ws://localhost:9545');
+export const web3 = new Web3(Web3.givenProvider || 'ws://localhost:8545');
 
 let cryptoZombies: Contract;
 let userAccount: string;

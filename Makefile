@@ -15,10 +15,18 @@ lint:
 test:
 	npm run test
 
-blockchain:
-	npm run blockchain
+ganache:
+	npm run ganache
+
+truffle-migrate:
+	npm run truffle-migrate
 
 start:
 	npm run serve
+
+# HELPERS
+
+stop-ganache:
+	kill -9 $(lsof -t -i:8545) || echo 'Nothing to kill'
 
 .PHONY: test build

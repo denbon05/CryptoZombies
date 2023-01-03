@@ -24,6 +24,14 @@ truffle-migrate:
 start:
 	npm run serve
 
+# TESTNETS
+
+deploy-goerli:
+	npx truffle migrate --network goerli
+
+deploy-loom:
+	npx truffle migrate --network loom_testnet
+
 # HELPERS
 
 stop-ganache:

@@ -27,5 +27,5 @@ module.exports = {
     '@typescript-eslint/indent': ['error', 2],
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
   },
-  ignorePatterns: ['migrations/*', 'truffle-config.js', 'build/**'],
+  ignorePatterns: ['migrations/*', 'build/**'],
 };

@@ -16,7 +16,21 @@ make ganache # 1st terminal
 make truffle-migrate # 2th terminal
 ```
 
-<p>Copy <i>contract address</i> and set value <i>CRYPTO_ZOMBIE_CONTRACT_ADDRESS</i> env var into <i>.env</i> file.</p>
+<p>Define next env vars in <i>./.env</i> file:</p>
+<ul>
+  <li>CRYPTO_ZOMBIE_CONTRACT_ADDRESS</li>
+  <li>MNEMONIC</li>
+  <li>INFURA_API_KEY - for 
+    <a href="https://cryptozombies.io/en/lesson/10/chapter/6" target="_blank">
+      goerli
+    </a> testnet
+  </li>
+  <li>LOOM_PRIVATE_KEY - for 
+    <a href="https://cryptozombies.io/en/lesson/10/chapter/8" target="_blank">
+      loom
+    </a> local testnet
+  </li>
+</ul>
 
 ### Run dApp
 
@@ -30,12 +44,13 @@ make start # http://localhost:9000
 make test
 ```
 
-### Loom network
+#### References
 
-<p>
-  Uncomment <i>truffle-config.js</i> as 
-  <a href="https://cryptozombies.io/en/lesson/11/chapter/14">
-  here
-  </a>.
-</p>
-<p>Define vars in <i>config/web3.json</i> as in <i>config/web3.example.json</i></p>
+<ul>
+  <li>
+    <a href="https://cryptozombies.io/en/lesson/10/chapter/10" target="_blank">
+      Deploy to the Basechain
+    </a>
+  </li>
+  <!-- <li><a href="" target="_blank"></a></li> -->
+</ul>

@@ -1,9 +1,4 @@
-//? Loom: https://cryptozombies.io/en/lesson/11/chapter/14
-// const HDWalletProvider = require('truffle-hdwallet-provider');
-// const LoomTruffleProvider = require('loom-truffle-provider');
-// const web3config = require('./config/web3.json');
-
-// const mnemonic = web3config.mnemonicPhrase;
+/* eslint-disable @typescript-eslint/no-var-requires */
 
 /**
  * Use this file to configure your truffle project. It's seeded with some
@@ -48,8 +43,14 @@
  * https://trufflesuite.com/docs/truffle/getting-started/using-the-truffle-dashboard/
  */
 
-// require('dotenv').config();
-// const { MNEMONIC, PROJECT_ID } = process.env;
+// ? Loom: https://cryptozombies.io/en/lesson/11/chapter/14
+const HDWalletProvider = require('truffle-hdwallet-provider');
+const LoomTruffleProvider = require('loom-truffle-provider');
+require('dotenv').config();
+// const web3config = require('./config/web3.json');
+
+// const mnemonic = web3config.mnemonicPhrase;
+const { MNEMONIC, INFURA_API_KEY, LOOM_PRIVATE_KEY } = process.env;
 
 // const HDWalletProvider = require('@truffle/hdwallet-provider');
 
@@ -78,35 +79,39 @@ module.exports = {
       gas: 9500000,
     },
     // Configuration for Ethereum Mainnet
-    // mainnet: {
-    //   provider: function () {
-    //     return new HDWalletProvider(
-    //       mnemonic,
-    //       'https://mainnet.infura.io/v3/' + web3config.infuraApiKey,
-    //     );
-    //   },
-    //   network_id: '1', // Match any network id
-    // },
-    // Configuration for Rinkeby Metwork
-    // rinkeby: {
-    //   provider: function() {
-    //       // Setting the provider with the Infura Rinkeby address and Token
-    //       return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/<YOUR_INFURA_API_KEY>")
-    //   },
-    //   network_id: 4
-    // },
+    mainnet: {
+      provider() {
+        return new HDWalletProvider(
+          MNEMONIC,
+          `https://mainnet.infura.io/v3/${INFURA_API_KEY}`,
+        );
+      },
+      network_id: '1', // Match any network id
+    },
+    // Configuration for rinkeby network
+    goerli: {
+      // Special function to setup the provider
+      provider() {
+        // Setting the provider with the Infura Rinkeby address and Token
+        return new HDWalletProvider(
+          MNEMONIC,
+          `https://goerli.infura.io/v3/${INFURA_API_KEY}`,
+        );
+      },
+      // Network id is 4 for Rinkeby
+      network_id: 5,
+    },
     // Configuration for Loom Testnet
-    // loom_testnet: {
-    //   provider: function() {
-    //       const privateKey = 'YOUR_PRIVATE_KEY';
-    //       const chainId = 'extdev-plasma-us1';
-    //       const writeUrl = 'wss://extdev-basechain-us1.dappchains.com/websocket';
-    //       const readUrl = 'wss://extdev-basechain-us1.dappchains.com/queryws';
-    //       // TODO: Replace the line below
-    //       return new LoomTruffleProvider(chainId, writeUrl, readUrl, privateKey);
-    //   },
-    //   network_id: '9545242630824'
-    // }
+    loom_testnet: {
+      provider() {
+        const privateKey = LOOM_PRIVATE_KEY;
+        const chainId = 'extdev-plasma-us1';
+        const writeUrl = 'http://extdev-plasma-us1.dappchains.com:80/rpc';
+        const readUrl = 'http://extdev-plasma-us1.dappchains.com:80/query';
+        return new LoomTruffleProvider(chainId, writeUrl, readUrl, privateKey);
+      },
+      network_id: '9545242630824',
+    },
     //
     // An additional network, but with some advanced options…
     // advanced: {
@@ -119,7 +124,8 @@ module.exports = {
     // },
     //
     // Useful for deploying to a public network.
-    // Note: It's important to wrap the provider as a function to ensure truffle uses a new provider every time.
+    // Note: It's important to wrap the provider as a function to ensure truffle uses a
+    // new provider every time.
     // goerli: {
     //   provider: () => new HDWalletProvider(MNEMONIC, `https://goerli.infura.io/v3/${PROJECT_ID}`),
     //   network_id: 5,       // Goerli's id
